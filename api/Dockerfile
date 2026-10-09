@@ -1,4 +1,4 @@
-FROM buildpack-deps:bullseye AS isolate
+FROM buildpack-deps:bookworm AS isolate
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git libcap-dev && \
     rm -rf /var/lib/apt/lists/* && \
@@ -8,7 +8,7 @@ RUN apt-get update && \
     make -j$(nproc) install && \
     rm -rf /tmp/*
 
-FROM node:18-bullseye-slim
+FROM node:18-bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
